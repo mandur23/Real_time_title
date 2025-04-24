@@ -109,8 +109,7 @@ class RealtimeWhisperTranslator:
         # 타겟 언어 선택
         ttk.Label(lang_frame, text="번역 언어:").pack(side=tk.LEFT, padx=5)
         self.target_lang_var = StringVar(value="en")
-        self.target_lang_dropdown = ttk.Combobox(lang_frame, textvariable=self.target_lang_var, state="readonly",
-                                                 width=10)
+        self.target_lang_dropdown = ttk.Combobox(lang_frame, textvariable=self.target_lang_var, state="readonly", width=10)
         self.target_lang_dropdown['values'] = ["ko", "en", "ja", "zh", "es", "fr", "de", "ru"]
         self.target_lang_dropdown.pack(side=tk.LEFT, padx=5)
 
@@ -121,8 +120,7 @@ class RealtimeWhisperTranslator:
         # 모델 크기 선택
         ttk.Label(model_frame, text="모델 크기:").pack(side=tk.LEFT, padx=5)
         self.model_size_var = StringVar(value=self.model_size)
-        self.model_size_dropdown = ttk.Combobox(model_frame, textvariable=self.model_size_var, state="readonly",
-                                                width=10)
+        self.model_size_dropdown = ttk.Combobox(model_frame, textvariable=self.model_size_var, state="readonly", width=10)
         self.model_size_dropdown['values'] = ["tiny", "base", "small", "medium", "large-v3"]
         self.model_size_dropdown.pack(side=tk.LEFT, padx=5)
         self.model_size_dropdown.bind("<<ComboboxSelected>>", self.on_model_change)
@@ -158,8 +156,7 @@ class RealtimeWhisperTranslator:
         """모델 변경 시 처리"""
         new_model_size = self.model_size_var.get()
         if new_model_size != self.model_size:
-            result = messagebox.askquestion("모델 변경",
-                                            f"모델을 {new_model_size}로 변경하시겠습니까?\n(변경 시 약간의 시간이 소요될 수 있습니다)")
+            result = messagebox.askquestion("모델 변경", f"모델을 {new_model_size}로 변경하시겠습니까?\n(변경 시 약간의 시간이 소요될 수 있습니다)")
             if result == 'yes':
                 self.status_var.set(f"모델 변경 중: {new_model_size}")
                 # 스레드로 모델 로딩 실행
